@@ -6,6 +6,7 @@ export default function TodoForm() {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [reminder, setReminder] = useState<string>("");
+  const [expanded, setExpanded] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -15,33 +16,44 @@ export default function TodoForm() {
     setTitle("");
     setNotes("");
     setReminder("");
+    setExpanded(false);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card w-full max-w-3xl">
-      <div className="flex gap-3 items-start">
+    <form onSubmit={handleSubmit} className="todo-form">
+      <div className="todo-form-row">
+        <span className="todo-form-icon" aria-hidden="true" />
         <input
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Add a task"
-          className="flex-1 p-3 bg-transparent border-b border-black/10 focus:outline-none"
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setExpanded(true);
+          }}
+          onFocus={() => setExpanded(true)}
+          placeholder="Add a task…"
+          className="todo-form-input"
         />
-        <button className="btn-ghost">Add</button>
+        <button type="submit" className="btn-primary">
+          Add
+        </button>
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-3">
-        <input
-          value={reminder}
-          onChange={(e) => setReminder(e.target.value)}
-          type="datetime-local"
-          className="p-2 border rounded-lg"
-        />
-        <input
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          placeholder="Notes (optional)"
-          className="p-2 border rounded-lg"
-        />
-      </div>
+
+      {expanded && (
+        <div className="todo-form-extras">
+          <input
+            value={reminder}
+            onChange={(e) => setReminder(e.target.value)}
+            type="datetime-local"
+            className="todo-form-field"
+          />
+          <input
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Notes (optional)"
+            className="todo-form-field"
+          />
+        </div>
+      )}
     </form>
   );
 }
