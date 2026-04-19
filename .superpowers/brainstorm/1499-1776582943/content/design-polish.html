@@ -1,0 +1,92 @@
+<h2>Design: Airy & Spacious Polish</h2>
+<p class="subtitle">Applied to home page and todos page. Theme variables control all colors.</p>
+
+<div class="split" style="gap:24px;align-items:flex-start">
+
+  <div class="mockup" style="flex:1">
+    <div class="mockup-header">Home page (polished)</div>
+    <div class="mockup-body" style="font-family:system-ui;background:#fff;padding:32px 24px;min-height:300px">
+      <div style="margin-bottom:32px">
+        <div style="font-size:10px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Todo App</div>
+        <h1 style="font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.2;margin:0 0 12px">A Minimal Todo App</h1>
+        <p style="font-size:14px;color:#777;line-height:1.7;margin:0 0 24px;max-width:340px">Simple, focused todo list with reminders and optional Firebase sync.</p>
+        <div style="display:flex;gap:10px">
+          <a style="display:inline-flex;align-items:center;gap:6px;background:#0a0a0a;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:500;text-decoration:none">Open Todos →</a>
+          <a style="display:inline-flex;align-items:center;gap:6px;border:1px solid #eee;color:#777;padding:10px 16px;border-radius:10px;font-size:13px;text-decoration:none">Project Plan</a>
+        </div>
+      </div>
+
+      <div style="background:#fafafa;border-radius:14px;padding:18px 20px">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#aaa;margin-bottom:12px">Features</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
+            <span style="width:6px;height:6px;border-radius:50%;background:#0a0a0a;flex-shrink:0"></span>CRUD todos with notes, due date, and reminders
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
+            <span style="width:6px;height:6px;border-radius:50%;background:#0a0a0a;flex-shrink:0"></span>In-browser notifications; optional FCM push
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#555">
+            <span style="width:6px;height:6px;border-radius:50%;background:#0a0a0a;flex-shrink:0"></span>Firestore sync — easy to add your Firebase project
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup" style="flex:1">
+    <div class="mockup-header">Todos page (polished)</div>
+    <div class="mockup-body" style="font-family:system-ui;background:#fff;padding:24px 20px;min-height:300px">
+
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px">
+        <div>
+          <div style="font-size:10px;color:#aaa;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px">Saturday, Apr 19</div>
+          <div style="font-weight:700;font-size:20px;letter-spacing:-0.5px">Your Todos</div>
+        </div>
+        <button style="width:36px;height:36px;border-radius:50%;background:#f5f5f5;border:none;font-size:16px;cursor:pointer">⚙</button>
+      </div>
+
+      <!-- Add form -->
+      <div style="background:#fafafa;border-radius:14px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;gap:10px">
+        <div style="width:22px;height:22px;border-radius:50%;border:1.5px solid #ddd;flex-shrink:0"></div>
+        <span style="font-size:13px;color:#bbb;flex:1">Add a task…</span>
+        <button style="background:#0a0a0a;color:#fff;border:none;padding:6px 14px;border-radius:8px;font-size:12px">Add</button>
+      </div>
+
+      <!-- Todo items -->
+      <div style="display:flex;flex-direction:column">
+        <div style="padding:14px 0;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:12px">
+          <div style="width:22px;height:22px;border-radius:50%;border:1.5px solid #ddd;flex-shrink:0"></div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:500">Buy groceries</div>
+            <div style="font-size:11px;color:#aaa;margin-top:2px">Due today · No notes</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button style="font-size:11px;color:#aaa;background:none;border:none;cursor:pointer">Edit</button>
+            <button style="font-size:11px;color:#aaa;background:none;border:none;cursor:pointer">Delete</button>
+          </div>
+        </div>
+        <div style="padding:14px 0;display:flex;align-items:center;gap:12px;opacity:0.4">
+          <div style="width:22px;height:22px;border-radius:50%;background:#e8e8e8;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999">✓</div>
+          <div style="flex:1">
+            <div style="font-size:13px;text-decoration:line-through">Read chapter 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:24px">
+  <h3>What changes</h3>
+  <ul style="font-size:14px;line-height:1.8;color:#555;padding-left:20px">
+    <li><strong>Header:</strong> Date label above the page title; gear icon as a circle button</li>
+    <li><strong>Add form:</strong> Merged into a single rounded pill-style row with an inline Add button</li>
+    <li><strong>Todo items:</strong> Circular checkboxes, subtle dividers, metadata line (due date / notes)</li>
+    <li><strong>Home page:</strong> Stronger type hierarchy, filled CTA button, feature list with dot markers</li>
+    <li><strong>All colors</strong> driven by CSS variables — themes swap automatically</li>
+  </ul>
+</div>
+
+<p class="subtitle" style="margin-top:16px">Happy with this direction? (This is the last design section.)</p>

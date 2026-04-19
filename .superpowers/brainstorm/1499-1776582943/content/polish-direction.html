@@ -1,0 +1,90 @@
+<h2>What level of UI polish are you after?</h2>
+<p class="subtitle">Pick the direction that fits best. We'll apply it across the app.</p>
+
+<div class="cards" style="grid-template-columns:1fr 1fr;">
+
+  <div class="card" data-choice="subtle" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fff;border:1px solid #eee;border-radius:10px;padding:16px;font-family:system-ui">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <span style="font-weight:600;font-size:14px">Your Todos</span>
+        <span style="font-size:10px;color:#999;border:1px solid #eee;padding:2px 8px;border-radius:999px">⚙ Settings</span>
+      </div>
+      <div style="background:#fafafa;border-radius:8px;padding:10px;margin-bottom:8px;display:flex;align-items:center;gap:8px;font-size:12px">
+        <span style="color:#ccc">○</span> Buy groceries
+      </div>
+      <div style="background:#fafafa;border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;font-size:12px;color:#aaa;text-decoration:line-through">
+        <span style="color:#000">✓</span> Read chapter 3
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Subtle Refinement</h3>
+      <p>Tighten spacing, improve typography, soften borders. Clean but minimal change from today.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="modern" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fff;border:1px solid #eee;border-radius:10px;padding:16px;font-family:system-ui">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <span style="font-weight:700;font-size:14px;letter-spacing:-0.5px">Your Todos</span>
+        <button style="background:#000;color:#fff;border:none;padding:4px 12px;border-radius:8px;font-size:11px;cursor:pointer">⚙</button>
+      </div>
+      <div style="border:1px solid #f0f0f0;border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;font-size:12px">
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;border:2px solid #000;border-radius:4px;display:inline-block"></span> Buy groceries</div>
+        <span style="font-size:10px;color:#aaa">Today</span>
+      </div>
+      <div style="border:1px solid #f0f0f0;border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#ccc">
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:#000;border-radius:4px;display:inline-block"></span> <s>Read chapter 3</s></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Modern & Structured</h3>
+      <p>Defined cards per todo, clear visual hierarchy, custom checkbox, date badge. Feels like a real app.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="editorial" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fff;border:1px solid #eee;border-radius:10px;padding:16px;font-family:system-ui">
+      <div style="margin-bottom:16px;border-bottom:2px solid #000;padding-bottom:8px">
+        <span style="font-weight:800;font-size:16px;letter-spacing:-1px">TODOS</span>
+        <span style="float:right;font-size:10px;background:#000;color:#fff;padding:2px 6px;border-radius:4px">⚙</span>
+      </div>
+      <div style="padding:8px 0;border-bottom:1px solid #f0f0f0;display:flex;align-items:baseline;gap:8px;font-size:12px">
+        <span style="font-size:9px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1px">01</span>
+        Buy groceries
+      </div>
+      <div style="padding:8px 0;display:flex;align-items:baseline;gap:8px;font-size:12px;color:#ccc;text-decoration:line-through">
+        <span style="font-size:9px;font-weight:700;color:#ddd;text-transform:uppercase;letter-spacing:1px">02</span>
+        Read chapter 3
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Editorial / Typographic</h3>
+      <p>Strong type, numbered list, minimal chrome. A more opinionated, distinctive aesthetic.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="airy" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#fff;border:1px solid #eee;border-radius:10px;padding:16px;font-family:system-ui">
+      <div style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:11px;color:#aaa;letter-spacing:1px;text-transform:uppercase">Saturday</div>
+          <div style="font-weight:600;font-size:15px">Your Todos</div>
+        </div>
+        <div style="width:32px;height:32px;border-radius:50%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:14px">⚙</div>
+      </div>
+      <div style="padding:10px 0;border-bottom:1px solid #f8f8f8;display:flex;align-items:center;gap:10px;font-size:12px">
+        <div style="width:20px;height:20px;border-radius:50%;border:1.5px solid #ddd;flex-shrink:0"></div>
+        <span>Buy groceries</span>
+      </div>
+      <div style="padding:10px 0;display:flex;align-items:center;gap:10px;font-size:12px;color:#ccc">
+        <div style="width:20px;height:20px;border-radius:50%;background:#f0f0f0;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px">✓</div>
+        <span style="text-decoration:line-through">Read chapter 3</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>D — Airy & Spacious</h3>
+      <p>Lots of breathing room, circular checkboxes, date context in header. Light and premium feel.</p>
+    </div>
+  </div>
+
+</div>
