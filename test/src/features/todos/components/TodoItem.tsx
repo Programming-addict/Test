@@ -13,22 +13,36 @@ export default function TodoItem({ todo }: { todo: any }) {
     await removeTodo(todo.id);
   }
 
+  const reminderDate = todo.reminderAt
+    ? new Date(todo.reminderAt.toDate?.() ?? todo.reminderAt).toLocaleDateString(
+        "en-US",
+        { month: "short", day: "numeric" }
+      )
+    : null;
+
   return (
-    <div className="flex items-center justify-between p-3 border-b">
-      <div className="flex items-center gap-3">
-        <input type="checkbox" checked={!!todo.completed} onChange={toggleComplete} />
-        <div>
-          <div className={todo.completed ? "muted line-through" : ""}>{todo.title}</div>
-          {todo.notes ? <div className="muted text-sm">{todo.notes}</div> : null}
-        </div>
+    <div className={`todo-item${todo.completed ? " completed" : ""}`}>
+      <button
+        className={`todo-checkbox${todo.completed ? " checked" : ""}`}
+        onClick={toggleComplete}
+        aria-label={todo.completed ? "Mark incomplete" : "Mark complete"}
+      >
+        {todo.completed && "✓"}
+      </button>
+
+      <div className="todo-content">
+        <div className="todo-title">{todo.title}</div>
+        {(reminderDate || todo.notes) && (
+          <div className="todo-meta">
+            {reminderDate && <span>{reminderDate}</span>}
+            {todo.notes && <span>{todo.notes}</span>}
+          </div>
+        )}
       </div>
-      <div className="flex items-center gap-2">
-        <button className="btn-ghost" onClick={() => setEditing((s) => !s)}>
-          Edit
-        </button>
-        <button className="btn-ghost" onClick={handleDelete}>
-          Delete
-        </button>
+
+      <div className="todo-actions">
+        <button onClick={() => setEditing((s) => !s)}>Edit</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );
