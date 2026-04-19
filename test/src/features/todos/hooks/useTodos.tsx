@@ -8,7 +8,12 @@ export default function useTodos(userId: string) {
 
   useEffect(() => {
     const unsub = subscribeTodos((items) => {
-      setTodos(items as any[]);
+      const sorted = [...items].sort((a, b) => {
+        const aTs = a.createdAt?.seconds ?? 0;
+        const bTs = b.createdAt?.seconds ?? 0;
+        return bTs - aTs;
+      });
+      setTodos(sorted);
     }, userId);
     return () => unsub();
   }, [userId]);

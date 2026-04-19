@@ -49,12 +49,11 @@ export async function removeTodo(id: string) {
 }
 
 export function subscribeTodos(callback: (items: any[]) => void, userId?: string) {
-  let q;
-  if (userId) {
-    q = query(todosCol, where("userId", "==", userId), orderBy("createdAt", "desc"));
-  } else {
-    q = query(todosCol, orderBy("createdAt", "desc"));
-  }
+  // userId query avoids orderBy to skip requiring a composite Firestore index;
+  // sorting is done client-side in useTodos instead.
+  const q = userId
+    ? query(todosCol, where("userId", "==", userId))
+    : query(todosCol, orderBy("createdAt", "desc"));
   return onSnapshot(q, (snap) => {
     const items = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
     callback(items);
