@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { addTodo } from "../services/todosService";
 
-export default function TodoForm() {
+export default function TodoForm({ userId }: { userId: string }) {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [reminder, setReminder] = useState<string>("");
@@ -12,7 +12,7 @@ export default function TodoForm() {
     e.preventDefault();
     if (!title.trim()) return;
     const reminderAt = reminder ? new Date(reminder) : null;
-    await addTodo({ title: title.trim(), notes: notes.trim(), reminderAt });
+    await addTodo({ title: title.trim(), notes: notes.trim(), reminderAt, userId });
     setTitle("");
     setNotes("");
     setReminder("");
