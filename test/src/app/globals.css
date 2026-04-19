@@ -1,10 +1,43 @@
 @import "tailwindcss";
 
+/* === Base variables (Mono — default) === */
 :root {
   --background: #ffffff;
   --foreground: #0a0a0a;
   --muted: #767676;
-  --accent: #000000;
+  --accent: #0a0a0a;
+  --surface: #fafafa;
+  --border: #f0f0f0;
+}
+
+/* === Theme: Sepia === */
+[data-theme="sepia"] {
+  --background: #fdf6e3;
+  --foreground: #3b2f1e;
+  --muted: #9a8070;
+  --accent: #5c4a2a;
+  --surface: #f5edd6;
+  --border: #e8dfc8;
+}
+
+/* === Theme: Forest === */
+[data-theme="forest"] {
+  --background: #f2f9f2;
+  --foreground: #1a3a1a;
+  --muted: #6a956a;
+  --accent: #2d6a2d;
+  --surface: #e8f4e8;
+  --border: #c0dfc0;
+}
+
+/* === Theme: Slate === */
+[data-theme="slate"] {
+  --background: #1e2433;
+  --foreground: #dce3ef;
+  --muted: #8090a8;
+  --accent: #7c9cbf;
+  --surface: #252d40;
+  --border: #2e3650;
 }
 
 @theme inline {
@@ -12,13 +45,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -29,23 +55,385 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* App-specific utilities for the black & white theme */
+/* === Shared utilities === */
 .app-shell {
   background: var(--background);
   color: var(--foreground);
 }
+
 .card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  padding: 1rem;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
 }
+
 .muted { color: var(--muted); }
+
 .btn-ghost {
   background: transparent;
-  border: 1px solid rgba(0,0,0,0.06);
-  color: var(--accent);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   padding: 0.5rem 0.75rem;
-  border-radius: 999px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
-.rounded-lg { border-radius: 12px; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* === Page layout === */
+.page-eyebrow {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.page-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.home-subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.feature-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.feature-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* === Icon button (gear) === */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Todo form === */
+.todo-form {
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.todo-form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+}
+
+.todo-form-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  flex-shrink: 0;
+  display: block;
+}
+
+.todo-form-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--foreground);
+}
+
+.todo-form-input::placeholder {
+  color: var(--muted);
+}
+
+.todo-form-extras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px 16px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.todo-form-field {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--foreground);
+  outline: none;
+}
+
+/* === Todo list === */
+.todo-list {
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.todo-empty {
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  color: var(--muted);
+}
+
+/* === Todo item === */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.15s;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item.completed {
+  opacity: 0.4;
+}
+
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--background);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.todo-checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.todo-item.completed .todo-title {
+  text-decoration: line-through;
+}
+
+.todo-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.todo-item:hover .todo-actions {
+  opacity: 1;
+}
+
+.todo-actions button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.todo-actions button:hover {
+  color: var(--foreground);
+}
+
+/* === Settings panel === */
+.settings-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 40;
+}
+
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 260px;
+  background: var(--background);
+  border-left: 1px solid var(--border);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+  padding: 24px;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.settings-panel.open {
+  transform: translateX(0);
+}
+
+.settings-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.settings-panel-header span {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.settings-panel-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.settings-section-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 10px;
+}
+
+.settings-theme-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+  width: 100%;
+}
+
+.settings-theme-row:hover {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.settings-theme-row.active {
+  background: var(--accent);
+  color: var(--background);
+  border-color: var(--accent);
+}
+
+.settings-theme-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(128, 128, 128, 0.3);
+  display: inline-block;
+}
